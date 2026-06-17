@@ -68,16 +68,14 @@ async function searchPokemon() {
         tarjeta.classList.add("tarjeta-pokemon")
 
         tarjeta.innerHTML = `
-            
-                <img src="${pokemonActual.imagen}" alt="imagen-pokemon" class="tarjeta-img">
-                <div class="tarjeta-contenido">
-                    <label class="nombre-pokemon">${pokemonActual.nombre}</label>
-                    <button class="boton-favoritos">
-                        ❤️ Agregar a Favoritos
-                    </button>
-                </div>
-            
-        `;
+    <img src="${pokemonActual.imagen}" alt="imagen-pokemon" class="tarjeta-img">
+    <div class="tarjeta-contenido">
+        <label class="nombre-pokemon">${pokemonActual.nombre}</label>
+        <button class="boton-favoritos" onclick="savePokemon()">
+            ❤️ Agregar a Favoritos
+        </button>
+    </div>
+`;
 
         contenedorBusqueda.innerHTML = "";
 
