@@ -3,7 +3,7 @@ function savePokemon() {
         return alert("Primero tienes que seleccionar un Pókemon")
     }
 
-    let favoritosGuardados = localStorage.getItem("favoritos");
+    let favoritosGuardados = localStorage.getItem("contenedor-favoritos");
     let favoritos;
 
     if (favoritosGuardados) {
@@ -17,18 +17,18 @@ function savePokemon() {
     });
     if (!yaExiste) {
         favoritos.push(pokemonActual);
-        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+        localStorage.setItem("contenedor-favoritos", JSON.stringify(favoritos));
         updateFavoritesList();
     }
 }
 
 console.log("savePokemon ejecutada");
 function updateFavoritesList() {
-    const favoritosguardados = localStorage.getItem('favoritos');
+    const favoritosguardados = localStorage.getItem('contenedor-favoritos');
     const favoritos = favoritosguardados ? JSON.parse(favoritosguardados) : [];
 
 
-    const favoritosDiv = document.getElementById('favoritos');
+    const favoritosDiv = document.getElementById('contenedor-favoritos');
     favoritosDiv.innerHTML = '';
 
     favoritos.forEach(function (pokemon) {
@@ -90,4 +90,3 @@ async function searchPokemon() {
 }
 
 btnBuscarPokemon.addEventListener("click", searchPokemon);
-
