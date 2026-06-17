@@ -1,0 +1,265 @@
+/* Estilos Globales y Fondo Cohesionados
+    */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9; /* Gris suave de fondo */
+    color: #2c3e50;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#video-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* cubre la pantalla */
+    z-index: -1; /* al fondo de todo */
+    filter: brightness(0.7); /* Oscurece un poquito  */
+}
+
+h1 {
+    color: #3B4CCA; /* Azul Pokémon */
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Barra de Búsqueda (andress)
+    */
+#barra-busqueda {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.85); /* Un fondo blanco sutil para que la barra flote sobre el video */
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#ingresar-pokemon {
+    padding: 14px 20px;
+    font-size: 16px;
+    border: 2px solid #3B4CCA; /* Borde Azul */
+    border-radius: 10px;
+    width: 70%;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#ingresar-pokemon:focus {
+    border-color: #FF0000; /* Cambia a Rojo  */
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.2);
+}
+
+/* Botones paleta */
+button {
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+#buscar-pokemon {
+    background-color: #FFDE00; /* Amarillo Pikachu */
+    color: #3B4CCA; /* Texto Azul */
+    border: 2px solid #B3A125;
+}
+
+#buscar-pokemon:hover {
+    background-color: #e6c800;
+}
+
+/* Botón de favoritos el JS */
+.btn-favorite, .boton-favoritos {
+    background-color: #FF0000; /* Rojo Pokebola */
+    color: white;
+    display: block;
+    margin: 15px auto 0 auto;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    width: 100%; /* Para que ocupe el ancho de la tarjeta nueva */
+}
+
+.btn-favorite:hover, .boton-favoritos:hover {
+    background-color: #CC0000;
+}
+
+/* Estilo extra para cuando el botón en favoritos sea para Eliminar */
+#contenedor-favoritos .boton-favoritos {
+    background-color: #3B4CCA; /* Azul para diferenciar eliminar de agregar */
+    box-shadow: 0 4px 12px rgba(59, 76, 202, 0.2);
+}
+#contenedor-favoritos .boton-favoritos:hover {
+    background-color: #2a3795;
+}
+
+/* Contenedor de Búsqueda 
+    */
+#contenedor-busqueda, #contenedor-favoritos {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.9); /* Contenedores blancos traslúcidos hermosos */
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+#contenedor-busqueda h2, #contenedor-favoritos h2 {
+    color: #3B4CCA;
+    font-size: 1.4rem;
+    margin-top: 0;
+    border-bottom: 3px solid #FFDE00;
+    padding-bottom: 6px;
+}
+
+/* Tarjetael JavaScript contenedor-busqueda */
+.pokemon-card, .tarjeta-pokemon {
+    background: #ffffff;
+    border: 2px solid #3B4CCA;
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(59, 76, 202, 0.1);
+    max-width: 220px;
+    margin: 20px auto;
+    transition: all 0.2s ease;
+}
+
+.tarjeta-pokemon:hover {
+    transform: translateY(-5px);
+    border-color: #FFDE00; /* Resalta en Amarillo al pasar el cursor */
+    box-shadow: 0 6px 14px rgba(255, 222, 0, 0.3);
+}
+
+.pokemon-card img, .tarjeta-img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+}
+
+.pokemon-name, .nombre-pokemon {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 12px 0;
+    color: #3B4CCA;
+    display: block;
+}
+
+/* Contenedor de Favoritos Tarjetas)
+     */
+#contenedor-favoritos {
+    max-width: 800px;
+}
+
+/* Caja de rejilla para que las tarjetas se alineen de lado a lado */
+.grid-favoritos-caja {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    padding-top: 10px;
+}
+
+/* Tarjetas pequeñas de favoritos  JS */
+.fav-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.fav-item:hover {
+    transform: translateY(-5px);
+    border-color: #FFDE00; /* Resalta en Amarillo */
+    box-shadow: 0 6px 14px rgba(255, 222, 0, 0.2);
+}
+
+.fav-item img {
+    width: 90px;
+    height: 90px;
+}
+
+.fav-item p {
+    margin: 8px 0 0 0;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 0.95rem;
+    color: #2c3e50;
+}
+
+/* Sección de Participantes )
+    */
+.participantes {
+    margin-top: 30px;
+    background: rgba(44, 62, 80, 0.9);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.participantes p {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    color: #FFDE00; /* Título en amarillo */
+}
+
+.participantes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas ordenadas */
+    gap: 8px;
+    font-size: 14px;
+}
+
+.participantes li {
+    font-weight: 500;
+}
+.boton-favoritos {
+    padding: 8px 10px; 
+    font-size: 12px;   
+    white-space: nowrap; /*  una sola línea */
+}
+
+/* Evita que los labels*/
+.nombre-pokemon {
+    margin-bottom: 5px;
+}
+/*imagen  invisible */
+
+.tarjeta-img:not([src]), 
+.tarjeta-img[src=""] {
+    display: none;
+}
+
+/*  una clase de 'error' */
+.tarjeta-img:onerror {
+    display: none;
+}
