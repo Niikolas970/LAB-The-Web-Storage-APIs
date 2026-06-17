@@ -13,7 +13,7 @@ function savePokemon() {
     }
 
     let yaExiste = favoritos.some(function (elemento) {
-        return elemento.name === pokemonActual.name;
+        return elemento.nombre === pokemonActual.nombre;
     });
     if (!yaExiste) {
         favoritos.push(pokemonActual);
@@ -21,3 +21,5 @@ function savePokemon() {
         updateFavoritesList();
     }
 }
+
+console.log("savePokemon ejecutada");
