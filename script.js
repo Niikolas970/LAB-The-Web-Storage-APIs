@@ -34,8 +34,8 @@ function updateFavoritesList() {
     favoritos.forEach(function (pokemon) {
         const card = document.createElement('div');
         card.innerHTML =
-            '<img src="' + pokemon.image + '" alt="' + pokemon.name + '">' +
-            '<p>' + pokemon.name + '</p>';
+            '<img src="' + pokemon.imagen + '" alt="' + pokemon.nombre + '">' +
+            '<p>' + pokemon.nombre + '</p>';
         favoritosDiv.appendChild(card);
     });
 
