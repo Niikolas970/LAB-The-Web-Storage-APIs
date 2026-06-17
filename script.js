@@ -1,4 +1,29 @@
-function updateFavoritesList() {  
+function savePokemon() {
+    if (!pokemonActual) {
+        return alert("Primero tienes que seleccionar un Pókemon")
+    }
+
+    let favoritosGuardados = localStorage.getItem("favoritos");
+    let favoritos;
+
+    if (favoritosGuardados) {
+        favoritos = JSON.parse(favoritosGuardados);
+    } else {
+        favoritos = [];
+    }
+
+    let yaExiste = favoritos.some(function (elemento) {
+        return elemento.nombre === pokemonActual.nombre;
+    });
+    if (!yaExiste) {
+        favoritos.push(pokemonActual);
+        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+        updateFavoritesList();
+    }
+}
+
+console.log("savePokemon ejecutada");
+function updateFavoritesList() {
     const favoritosguardados = localStorage.getItem('favoritos');
     const favoritos = favoritosguardados ? JSON.parse(favoritosguardados) : [];
 
@@ -8,11 +33,11 @@ function updateFavoritesList() {
 
     favoritos.forEach(function (pokemon) {
         const card = document.createElement('div');
-        card.innerHTML = 
-         '<img src="' + pokemon.image + '" alt="' + pokemon.name + '">' +
-      '<p>' + pokemon.name + '</p>';
-    favoritosDiv.appendChild(card);
-  });
+        card.innerHTML =
+            '<img src="' + pokemon.imagen + '" alt="' + pokemon.nombre + '">' +
+            '<p>' + pokemon.nombre + '</p>';
+        favoritosDiv.appendChild(card);
+    });
 
 }
 
@@ -66,6 +91,3 @@ async function searchPokemon() {
 
 btnBuscarPokemon.addEventListener("click", searchPokemon);
 
-
-// <h3>${pokemonActual.nombre}</h3>
-// <img src="${pokemonActual.imagen}" alt="${pokemonActual.nombre}">
